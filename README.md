@@ -1,4 +1,4 @@
-# Intercom Activity Submission
+# Effortless profile photo selection
 
 ## Problem 🌍 
 ---toFill
@@ -10,12 +10,12 @@ Download the project using
 ```bash
 git clone https://github.com/ArindamMalik96/profilePhotoGeneration.git
 ```
-##Installation and playing with docker images
+###Installation and playing with docker images
 
-### Install docker if already not installed
-#### Linux [🔗](https://docs.docker.com/engine/install/ubuntu/)
-#### Windows [🔗](https://docs.docker.com/docker-for-windows/install/)
-#### MacOS [🔗](https://docs.docker.com/docker-for-mac/install/)
+Install docker if already not installed through below link
+Linux [🔗](https://docs.docker.com/engine/install/ubuntu/)
+Windows [🔗](https://docs.docker.com/docker-for-windows/install/)
+MacOS [🔗](https://docs.docker.com/docker-for-mac/install/)
 
 
 ### Go inside the root folder
@@ -129,4 +129,4 @@ python main.py
 
 ## Stuck somewhere?
 Please feel free to reach out to me here:
-[Uddish Verma](mailto:arindammalik96@gmail.com)
+[Arindam Malik](mailto:arindammalik96@gmail.com)
