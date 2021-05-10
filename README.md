@@ -58,7 +58,11 @@ curl --location --request POST '127.0.0.1:8013/api/perfectProfilePhoto' \
 }'
 ```
 
+![pageres](MainPic.jpg "Main")
+
 This will return cropped image
+
+![pageres](croppedImage.jpg "Result")
 
 
 ## Stuck somewhere?
