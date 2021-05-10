@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request,send_file
 import json
 app = Flask(__name__)
 from dist_bw_faces_multi1 import *
@@ -20,13 +20,26 @@ def detect_face():
         return json.dumps(dimensionFace, cls=NumpyEncoder)
     return "unsufficient data"  
 
+@app.route('/api/perfectProfilePhoto', methods=['GET', 'POST'])
+def perfectProfilePhoto():
+    content = request.json
+    # requestUrl = "http://highresolution.photography/images/girl-face-with-freckles-main.jpg";
+    requestUrl = content.get("imgUrl")
+    if requestUrl:
+        imagePath = getPerfectProfilePhoto(requestUrl)
+        imageToReturn=send_file(imagePath, mimetype='image/jpeg', as_attachment=True)
+        os.remove(imagePath)
+        return imageToReturn
+
+        #return json.dumps(dimensionFace, cls=NumpyEncoder)
+    return "unsufficient data"  
+
 @app.route('/api/detectCaffeFace', methods=['GET', 'POST'])
 def detectCaffeface():
     content = request.json
     # requestUrl = "http://highresolution.photography/images/girl-face-with-freckles-main.jpg";
     requestUrl = content.get("imgUrl")
     if requestUrl:
-        print(requestUrl,"\n")
         dimensionFace = getFaceFromCaffe(requestUrl)
         return json.dumps(dimensionFace, cls=NumpyEncoder)
     return "unsufficient data"  

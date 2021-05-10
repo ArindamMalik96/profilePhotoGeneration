@@ -132,12 +132,23 @@ def getFaceFromCaffe (url):
         img_path123 =download_image (url)
         pic = load_image (img_path123)
         ret = getFaces(pic,img_path123)
-        os.remove(img_path123)
+        #os.remove(img_path123)
         return ret
     except Exception as e:
         return ''
 
-def getFaces(pic,img_path123):
+def getPerfectProfilePhoto (url):
+    try:
+        img_path123 =download_image (url)
+        pic = load_image (img_path123)
+        ret = getFaces(pic,img_path123,True)
+        #os.remove(img_path123)
+        return ret
+    except Exception as e:
+        return ''
+
+
+def getFaces(pic,img_path123,returnPath = False):
     faces = detect_faces (pic)
     num_faces = len (faces)
     Dimension_Faces=[None]*((num_faces))   
@@ -169,12 +180,11 @@ def getFaces(pic,img_path123):
         y1=str(z[1])
         Dimension_Faces[i]=width+height+x1+y1
         
-        '''if maxW<((z[2]-z[0])*(z[3]-z[1])):
+        if maxW<((z[2]-z[0])*(z[3]-z[1])):
         	maxW=(z[2]-z[0])*(z[3]-z[1])
         	m=z
-        '''
+        
         faceSize[i]=(z[2]-z[0])*(z[3]-z[1])
-
 
     if(num_faces>1): 
         max_value_face = max(faceSize)
@@ -185,12 +195,19 @@ def getFaces(pic,img_path123):
         if(proportion<1.3):
             print("\n\nMULTI USER, EXITING\n\n")
             return ""
-        #drawBox(img_path123,m)
+        drawBox(img_path123,m)
         
         maxDim=Dimension_Faces[max_value_face_index]
     else:
         #drawBox(img_path123,m)
         maxDim=Dimension_Faces[0]
+    
+    if returnPath:
+        im = cv2.imread(img_path123)
+        im = cv2.rectangle(im, (m[0],m[1]), (m[2],m[3]), (0,255,255), 2) 
+        im = im[m[1]:m[3],m[0]:m[2]]
+        cv2.imwrite((img_path123), im)
+        return img_path123
 
     return maxDim
 
