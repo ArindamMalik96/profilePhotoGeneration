@@ -3,7 +3,7 @@
 ## Problem 🌍 
 With so many online face detection software running, it is hard to find just the right one that suit your need. This model will provide you cropped image from a url, that will focus on ***the most prominent person***, ***reject photo that has multiple faces of equal size*** and ***reject photo that has only small faces***. This code runs on docker so by following just couple of lines you will have complete running model that you attach to your application/platform.
 
-## Installation instructions ‍ 
+## Installation instructions 
 The project run inside docker container so you do not need to worry about any installation. Just follow simple instructions.
 
 Download the project using
